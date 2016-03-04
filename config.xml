@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="io.github.rhildred.studentprototype" version="0.0.1">
+
+    <name>Image Scramble</name>
+    <icon src="images/icon.png"></icon>
+    <description>
+        An image scramble game for android
+    </description>
+    <content src="index.html" />
+    <preference name="phonegap-version" value="cli-5.2.0" />
+    <author href="https://kruparelia.github.io">
+        Kunal Ruparelia
+    </author>
+    <access origin="*" />
+</widget>
