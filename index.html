@@ -69,7 +69,7 @@
 
             var puzzleImages = ['images/boston_exterior.jpg','images/boston_logo.png']	// Array of images to choose from
             var rows = 2;
-            var cols = 3;
+            var cols = 2;
 
             var imageArray = new Array();
             var imageInUse = false;
@@ -88,6 +88,8 @@
             var gameInProgress = false;
 
             var revealedImage = false;
+
+            var gameDone = false;
 
             for(var no=0;no<puzzleImages.length;no++){
                 imageArray[no] = new Image();
@@ -174,6 +176,7 @@
 
             function gameFinished()
             {
+
                 var string = "";
 
                 var squareWidth = colWidth + 1;
@@ -198,9 +201,10 @@
                 if(correctSquares == ((cols * rows) -1)){
                     document.getElementById('messageDiv').innerHTML = '<h2>Fantastic! You did it !!</h2>';
                     gameInProgress = false;
+                    gameDone = true;
                     revealImage();
                     stop();
-                    var $bestTime = document.getElementById('time').innerHTML;
+                    bestTime();
 
                 }else{
                     document.getElementById('messageDiv').innerHTML = 'Currently, you have ' + correctSquares + ' out of ' + ((cols * rows) -1) + ' pieces placed correctly';
@@ -427,6 +431,12 @@
                 update();
             }
 
+            var bestTime = function(){
+                if(gameDone){
+                    $highScore = formatTime(x.time());
+                    document.getElementById('bestTimeMessage').innerHTML = 'Your best time is ' + $highScore;
+                }
+            }
 
 
         </script>
@@ -438,12 +448,12 @@
         </div>
         </br>
 
-        <div id = "timeSize">Time: <span id="time"></span></div></html></br>
+        <div id = "timeSize">Time: <span id="time"></span></div></br>
 
         <div id="messageDiv"></div>
         <p><i>Shuffle, then click to move the pieces</i></p></br>
 
-        <p> Your best time is: <script> %bestTime </script> </p>
+        <div id="bestTimeMessage"></div>
 
 
 
